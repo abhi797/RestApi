@@ -25,6 +25,7 @@ public class CourseServiceImpl implements CourseService {
 	}
 	
 	@Override
+	
 	public List<Course> getCourses() {
 		
 		return courseDao.findAll();
@@ -36,6 +37,11 @@ public class CourseServiceImpl implements CourseService {
 		//return course;
 		courseDao.save(course);
 		return course;
+	}
+	@Override
+	public List<Course> addAll(List<Course> courses){
+		courseDao.saveAll(courses);
+		return courses;
 	}
 	
 	@Override
@@ -54,9 +60,22 @@ public class CourseServiceImpl implements CourseService {
 	@Override
 	public void deleteCourse(long parseLong) {
 	//	list = this.list.stream().filter(e->e.getId()!=parseLong).collect(Collectors.toList());
-		Course entity = courseDao.getById(parseLong);
-		courseDao.delete(entity);
+		//Course entity = courseDao.getById(parseLong);
+		//courseDao.delete(entity);
+		
+		if(parseLong!= 0L) {
+			courseDao.deleteById(parseLong);
+		}
+		else {
+			courseDao.deleteAll();
+		}
 	}
+
+	public CourseServiceImpl(CourseDao courseDao) {
+		this.courseDao = courseDao;
+	}
+	
+	
 
 	
 	

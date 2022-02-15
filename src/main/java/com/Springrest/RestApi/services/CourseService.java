@@ -13,6 +13,8 @@ public interface CourseService {
 
 	public void deleteCourse(long parseLong);
 
+	public List<Course> addAll(List<Course> courses);
+
 	
      
 }

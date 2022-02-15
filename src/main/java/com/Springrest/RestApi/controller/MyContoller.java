@@ -40,6 +40,11 @@ public class MyContoller {
 	   return this.courseservice.addCourse(course);   
 	   
    }
+   @PostMapping("/courses")
+   public List<Course> addAll(@RequestBody List<Course> courses){
+	   return this.courseservice.addAll(courses);
+   }
+   
    @PutMapping("/course")
    public Course updateCourse(@RequestBody Course course) 
    {
